@@ -1,0 +1,268 @@
+<div class="bg-primary text-light px-3 py-5">
+    <h1 class="text-dark text-center">
+        <img src="assets/logo.png" alt="" height="150px">
+        NCAT Token
+    </h1>
+
+    <div class="container d-flex align-items-end">
+        <img src="assets/BB.png" alt="" class="dialog-head">
+        <div class="nes-balloon from-left nes-pointer text-primary mb-5">
+            <p>
+                NCAT Token is a meme community driven project built on Binance Smart Chain, which was fair launched. We continue to build based on community feedback and soon to be released full Governance.
+            </p>
+            <p>
+                Download and Read our <a [href]="environment.whitepaper" target="_blank" class="nes-btn is-primary">WhitePaper</a> here
+            </p>
+        </div>
+    </div>
+
+    <a name="trade"></a>
+
+    <div class="container d-flex align-items-end flex-row-reverse">
+        <img src="assets/AA.png" alt="" class="dialog-head">
+        <div class="nes-balloon from-right nes-pointer text-primary mb-5">
+            <p>
+                You can trade NCAT on
+                <a [href]="environment.pancakeswap" target="_blank" class="nes-btn is-success">Pancake Swap</a>
+                and
+                <a [href]="environment.whitebit" target="_blank" class="nes-btn is-warning">WhiteBit</a>
+            </p>
+            <div class="text-dark">
+                <h3>Need Help?</h3>
+                <li>
+                    <a [href]="environment.howtobuy">
+                        How to buy on Pancake Swap
+                    </a>
+                </li>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<a name="tokenomics"></a>
+
+<div class="bg-dark text-light px-3 py-5">
+    <div class="container">
+        <h1 class="text-center my-3">
+            Tokenomics
+            <br>
+            <i class="nes-icon coin is-large"></i>
+        </h1>
+        <div class="row text-center">
+            <div class="col p-2">
+                <p class="small text-muted">1M NCAT =</p>
+                <h4 class="text-primary">${{session.price.price * 1000000 | number : '.4' }}</h4>
+            </div>
+            <div class="col p-2">
+                <p class="small text-muted">Holders</p>
+                <h4>{{session.price.holders}}</h4>
+            </div>
+            <div class="col p-2">
+                <p class="small text-muted">MarketCap</p>
+                <h4 class="text-warning">${{(session.price.marketcap | num) / 1000000 | number: '.2'}}M</h4>
+            </div>
+            <div class="col p-2">
+                <p class="small text-muted">Total Supply</p>
+                <h5 class="text-warning">1,000T<br>NCAT</h5>
+            </div>
+        </div>
+        <progress class="nes-progress is-warning" [value]="session.price.percentage" max="100"></progress>
+        <div class="d-flex align-items-center">
+            <div class="flex-grow-1">
+                <div>
+                    <i class="nes-icon coin is-small"></i>
+                    {{(session.price.burn | num) / 1000000000000 | number:'.3'}}T NCAT Burned
+                </div>
+                <div>
+                    <i class="nes-icon coin is-small"></i>
+                    {{(session.price.supply | num) / 1000000000000 | number:'.3'}}T NCAT in Circulation
+                </div>
+            </div>
+            <div class="text-right">{{session.price.percentage}}% (<a target="_blank" [href]="environment.burnAddress">View Burn Tx</a>) </div>
+        </div>
+    </div>
+</div>
+
+<a name="features"></a>
+
+<div class="bg-light px-3 py-5">
+    <div class="container">
+        <h1 class="text-center my-3">
+            Features
+            <br>
+            <i class="nes-icon star is-large"></i>
+        </h1>
+        <div class="row">
+            <div class="col-12 col-md-6 mb-3">
+                <div class="nes-container is-centered with-title is-rounded">
+                    <h3 class="title">Community Built</h3>
+                    <img src="assets/vote.png" alt="" style="height:5em">
+                    <p>
+                        Community driven & fair launch. Dev burned all team tokens and renounced contract ownership to provide security to all the community!
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+                <div class="nes-container is-centered with-title is-rounded">
+                    <h3 class="title">LP Grinder</h3>
+                    <img src="assets/vote.png" alt="" style="height:5em">
+                    <p>
+                        <span class="text-primary">5%</span> of every transaction contributes toward automatically generating further liquidity for the NCAT Community. Benefiting long term holders the most!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6 mb-3">
+                <div class="nes-container is-centered with-title is-rounded">
+                    <h3 class="title">Frictionless Yield</h3>
+                    <img src="assets/vote.png" alt="" style="height:5em">
+                    <p>
+                        <span class="text-primary">4%</span> of every transaction is taken and <span class="text-primary">re distributed</span> to all NCAT holders. The burn address is also a holder thus each transaction helps deflate the supply.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+                <div class="nes-container is-centered with-title is-rounded">
+                    <h3 class="title">Highly Secured</h3>
+                    <img src="assets/vote.png" alt="" style="height:5em">
+                    <p>
+                        All initial liquidity provided has been locked with UniCrypt. <span class="text-primary">The contract owner has been renounced</span>, leaving the contract trustless for the NCAT community.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <a name="dao"></a>
+
+            <div class="col-12 col-md-6 mb-3">
+                <div class="nes-container is-centered with-title is-rounded">
+                    <h3 class="title">DAO</h3>
+                    <img src="assets/vote.png" alt="" style="height:5em">
+                    <p>
+                        What community token would be complete without a Decentralized Autonomous Organization(DAO)? Propose & Vote on creative ideas brought forward by the community! Allows the community to get a picture on which direction the majority of users want to head and helps stear the projects direction!
+                    </p>
+                </div>
+            </div>
+
+            <a name="nft"></a>
+
+            <div class="col-12 col-md-6 mb-3">
+                <div class="nes-container is-centered with-title is-rounded">
+                    <h3 class="title">NFT</h3>
+                    <img src="assets/vote.png" alt="" style="height:5em">
+                    <p>
+                        Coming up next, stay tuned!
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<a name="roadmap"></a>
+
+<div class="bg-light px-3 py-5">
+    <div class="container">
+        <h1 class="text-center my-3">
+            NCAT Roadmap
+            <br>
+            <i class="nes-icon trophy is-large"></i>
+        </h1>
+
+
+
+        <div class="container d-flex align-items-end">
+            <div class="nes-balloon from-right nes-pointer text-primary mb-5 flex-grow-1">
+                30 March 2021<br>
+                <h4>Audit by BSC Gemz</h4>
+                <p class="text-muted small">
+                    BSC Gemz has successfully completed our audit of NCAT and the results can be found <a [href]="environment.auditAddress" target="_blank">here</a>.
+                </p>
+            </div>
+            <img src="assets/BB.png" alt="" class="dialog-head">
+            <div class="flex-grow-1"></div>
+        </div>
+
+
+        <div class="container d-flex align-items-end flex-row-reverse">
+            <div class="nes-balloon from-left nes-pointer text-primary mb-5 flex-grow-1">
+                7 April 2021
+                <h4>Lambo Giveaway!</h4>
+                <p class="text-muted small">
+                    <span class="text-info">* A community initiative and donated by Alpha Capital</span><br><br>
+                    One raffle ticket for every 100 Billion NCAT. The winner will be drawn on <span class="text-info">May 6th, 2021</span> or once NCAT reaches <span class="text-info">250 Million Dollar MarketCap</span> (whichever comes last).
+                    <br><br>
+                    Winner will be awarded a <span class="text-info">Lamborghini Huracan or 350k USDT</span> equivalent (winners choice).
+                    <br><br>
+                    <a href="https://twitter.com/ncattoken/status/1379596029595619329" target="_blank">Read on Twitter</a>
+                </p>
+            </div>
+            <img src="assets/BB.png" alt="" class="dialog-head">
+            <div class="flex-grow-1"></div>
+        </div>
+
+        <div class="container d-flex align-items-end">
+            <div class="nes-balloon from-right nes-pointer text-primary mb-5 flex-grow-1">
+                10 April 2021<br>
+                <h4>Tradable on WhiteBit</h4>
+                <p class="text-muted small">
+                    <span class="text-info">$NCAT</span> is paired against <span class="text-info">$USDT</span>, with the <span class="text-info">$ETH</span> pair & more exciting activities coming soon.
+                    <br><br>
+                    Enjoy fee-free trading for 2 weeks: <a [href]="environment.whitebit" target="_blank">Click Here to Trade</a>
+                </p>
+            </div>
+            <img src="assets/BB.png" alt="" class="dialog-head">
+            <div class="flex-grow-1"></div>
+        </div>
+
+
+        <div class="container d-flex align-items-end flex-row-reverse">
+            <div class="nes-balloon from-left nes-pointer text-primary mb-5 flex-grow-1">
+                11 April 2021
+                <h4>Launch DAO</h4>
+                <p class="text-muted small">
+                    To create a purposal a user must have => <span class="text-info">100,000,000,000 NCAT</span>. This number was determined to ensure useless proposals aren't created and only allowed for members who are strong believers of the project!
+                    <br><br>
+                    Proposals last for 1 week and move from the active to pass or fail status. <span class="text-info">1 NCAT = 1 VOTE</span>
+                    <br><br>
+                    <a [href]="environment.daoaddress" target="_blank">Visit the DAO</a>
+                </p>
+            </div>
+            <img src="assets/BB.png" alt="" class="dialog-head">
+            <div class="flex-grow-1"></div>
+        </div>
+
+        <div class="container d-flex align-items-end">
+            <div class="nes-balloon from-right nes-pointer text-primary mb-5 flex-grow-1">
+                May 2021
+                <h4>Launch NFT (TBD)</h4>
+                <p class="text-muted small">
+                    <video src="assets/NFT_0004.mp4" height="150" autoplay="true" loop="true" controls="true"></video>
+                </p>
+            </div>
+            <img src="assets/BB.png" alt="" class="dialog-head">
+            <div class="flex-grow-1"></div>
+        </div>
+
+        <div class="container d-flex align-items-end flex-row-reverse">
+            <div class="nes-balloon from-left nes-pointer text-primary mb-5 flex-grow-1">
+                May 2021
+                <h4>Community Effort</h4>
+                <p class="text-muted small">
+                    Propose & Vote on creative ideas brought forward by the community! 🚀
+                </p>
+            </div>
+            <img src="assets/BB.png" alt="" class="dialog-head">
+            <div class="flex-grow-1"></div>
+        </div>
+
+    </div>
+</div>
