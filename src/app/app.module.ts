@@ -12,6 +12,10 @@ import { SessionService } from 'src/services/session.service';
 import { HomeComponent } from './home/home.component';
 import { WebpageComponent } from './webpage/webpage.component';
 import { NumPipe } from './num.pipe';
+import { TokenomicsComponent } from './components/body/tokenomics/tokenomics.component';
+import { FeaturesComponent } from './components/body/features/features.component';
+import { RoadmapComponent } from './components/body/roadmap/roadmap.component';
+import { FoldComponent } from './components/body/fold/fold.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { NumPipe } from './num.pipe';
     BottomComponent,
     HomeComponent,
     WebpageComponent,
-    NumPipe
+    NumPipe,
+    TokenomicsComponent,
+    FeaturesComponent,
+    RoadmapComponent,
+    FoldComponent
   ],
   imports: [
     BrowserModule,

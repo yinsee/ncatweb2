@@ -16,6 +16,7 @@ export const environment = {
   twitter: 'https://twitter.com/ncattoken',
   github: 'https://github.com/NCATtoken/',
   medium: 'https://ncattoken.medium.com/',
+  instagram: 'https://instagram.com/ncattoken',
   coingecko: 'https://www.coingecko.com/en/coins/ncat-token',
   coinmarketcap: 'https://coinmarketcap.com/currencies/ncat-token/',
   poocoin: 'https://poocoin.app/tokens/0x0cf011a946f23a03ceff92a4632d5f9288c6c70d',

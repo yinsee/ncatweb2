@@ -56,7 +56,7 @@ export class BottomComponent implements OnInit {
         { icon: 'star', title: 'Discord', url: environment.discord },
         { icon: 'like', title: 'Telegram', url: environment.telegram },
         { icon: 'twitter', title: 'Twitter', url: environment.twitter },
-        // { icon: 'instagram', title: 'Instagram', url: environment.instagram },
+        { icon: 'instagram', title: 'Instagram', url: environment.instagram },
         { icon: 'github', title: 'Github', url: environment.github },
         { icon: 'medium', title: 'Medium', url: environment.medium },
       ],
