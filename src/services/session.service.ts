@@ -2,16 +2,29 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import { ApiHttpService } from './api-http.service';
 import { Price } from './models.definitioins';
-
+import * as blockchain from "../services/blockchain";
+declare let window: any;
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
   price: Price = {};
+  address: string | null = null;
+  balance: number = 0;
+
+  get haveWallet(): boolean {
+    return window.ethereum?.isConnected();
+  }
+
+  get walletConnected(): boolean {
+    if (this.address !== window.ethereum?.selectedAddress) {
+      this.getBalance();
+    }
+    return window.ethereum?.selectedAddress !== null;
+  }
 
   constructor(private http: ApiHttpService) {
-    this.connectwallet();
     this.updatePrice();
   }
 
@@ -21,49 +34,32 @@ export class SessionService {
         this.price = res;
         console.log(res);
       }, (error) => {
-        //
+        // retry in 5 sec
+        setTimeout(() => this.updatePrice(), 5000);
+      }, () => {
+        // get new price every 15min, if u wait long enough :D
+        setTimeout(() => this.updatePrice(), 15 * 60 * 1000);
       });
   }
 
+  //  wallet action
   async connectwallet() {
-    // const providerOptions = {
-    //   walletconnect: {
-    //     package: WalletConnectProvider, // required
-    //     options: {
-    //       infuraId: "INFURA_ID" // required
-    //     }
-    //   }
-    // };
-
-    // const web3Modal = new Web3Modal({
-    //   network: "mainnet", // optional
-    //   cacheProvider: true, // optional
-    //   providerOptions,
-    // });
-
-    // var provider = await web3Modal.connect();
-    // this.web3 = new Web3(provider);
-
-    // // Subscribe to accounts change
-    // provider.on("accountsChanged", (accounts: string[]) => {
-    //   console.log(accounts);
-    // });
-
-    // // Subscribe to chainId change
-    // provider.on("chainChanged", (chainId: number) => {
-    //   console.log(chainId);
-    // });
-
-    // // Subscribe to provider connection
-    // provider.on("connect", (info: { chainId: number }) => {
-    //   console.log(info);
-    // });
-
-    // // Subscribe to provider disconnection
-    // provider.on("disconnect", (error: { code: number; message: string }) => {
-    //   console.log(error);
-    // });
-
-
+    if (window.ethereum === undefined) {
+      return;
+    }
+    window.ethereum.enable().then(() => {
+      this.getBalance();
+    });
   }
+
+
+  private async getBalance(): Promise<any> {
+    this.address = window.ethereum.selectedAddress;
+    blockchain.getBalance(this.address).then((result) => {
+      this.balance = result;
+      // get new balance every 30s
+      setTimeout(() => this.getBalance(), 30000);
+    });
+  }
+
 }
