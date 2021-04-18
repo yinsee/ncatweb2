@@ -12,7 +12,7 @@
         </button>
         <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
             <ul ngbNav class="navbar-nav">
-                <ng-container *ngFor="let link of links">
+                <ng-container *ngFor="let link of (session.metadata.top_nav || links)">
                     <li [ngbNavItem]="link.fragment" class="nav-item" *ngIf="!link.items">
                         <a class="nav-link" [href]="link.url || link.fragment" [target]="link.url ? '_blank' : ''">{{ link.title }}</a>
                     </li>

@@ -6,84 +6,14 @@
             <i class="nes-icon trophy is-large"></i>
         </h1>
 
-        <div class="container d-flex align-items-end">
-            <div class="nes-balloon from-right nes-pointer text-primary mb-5">
-                30 March 2021<br>
-                <h4>Audit by BSC Gemz</h4>
-                <p class="text-muted small">
-                    BSC Gemz has successfully completed their audit of NCAT.
-                    <br><br>
-                    <a class="nes-btn is-primary" [href]="environment.auditAddress" target="_blank">View</a>
-                </p>
-            </div>
-            <img src="assets/BB.png" alt="" class="dialog-head">
-        </div>
-
-
-        <div class="container d-flex align-items-end">
-            <div class="nes-balloon from-left nes-pointer text-primary mb-5">
-                7 April 2021
-                <h4>Lambo Giveaway!</h4>
-                <p class="text-muted small">
-                    <span class="text-info">* A community initiative, donated by Alpha Capital</span><br><br>
-                    You get one raffle ticket for every 100 Billion NCAT you hold! The winner will be drawn on <span class="text-info">May 6th, 2021</span> or once NCAT reaches <span class="text-info">250 Million Dollar MarketCap</span> (whichever comes last.)
-                    <br><br>
-                    The winner will be awarded a <span class="text-info">Lamborghini Huracan or 350k USDT</span> equivalent (winner's choice.)
-                    <br><br>
-                    <a class="nes-btn is-primary" href="https://twitter.com/ncattoken/status/1379596029595619329" target="_blank">Read on Twitter</a>
-                </p>
-            </div>
-            <img src="assets/BB.png" alt="" class="dialog-head">
-        </div>
-
-        <div class="container d-flex align-items-end">
-            <div class="nes-balloon from-right nes-pointer text-primary mb-5">
-                10 April 2021<br>
-                <h4>Tradable on WhiteBit</h4>
-                <p class="text-muted small">
-                    <span class="text-info">$NCAT</span> is paired against <span class="text-info">$USDT</span>, with the <span class="text-info">$ETH</span> pair & more coming soon.
-                    <br>
-                    <br>
-                    <a class="nes-btn is-primary" [href]="environment.whitebit" target="_blank">Trade on WhiteBit</a>
-                </p>
-                <img src="assets/whitebit.png" alt="" style="width:30vw;max-width:200px;">
-            </div>
-            <img src="assets/BB.png" alt="" class="dialog-head">
-        </div>
-
-
-        <div class="container d-flex align-items-end">
-            <div class="nes-balloon from-left nes-pointer text-primary mb-5">
-                11 April 2021
-                <h4>Launch DAO</h4>
-                <p class="text-muted small">
-                    To create a <b>purrr-posal</b> a user must have => <span class="text-info">100,000,000,000 NCAT</span>. This threshold was determined to ensure arbitrary proposals are minimized, and restricted to members who are strong believers of the project!
-                    <br><br>
-                    Proposals last for 1 week and move from 'active' to 'pass' or 'fail' status. <span class="text-info">1 NCAT = 1 VOTE</span>
-                    <br><br>
-                    <a class="nes-btn is-primary" [href]="environment.daoaddress" target="_blank">Join the DAO</a>
-                </p>
-            </div>
-            <img src="assets/BB.png" alt="" class="dialog-head">
-        </div>
-
-        <div class="container d-flex align-items-end">
-            <div class="nes-balloon from-right nes-pointer text-primary mb-5">
-                May 2021
-                <h4>Launch NFT (TBD)</h4>
-                <p class="text-muted small">
-                    <img src="assets/nft.gif">
-                </p>
-            </div>
-            <img src="assets/BB.png" alt="" class="dialog-head">
-        </div>
-
-        <div class="container d-flex align-items-end">
-            <div class="nes-balloon from-left nes-pointer text-primary mb-5">
-                May 2021
-                <h4>Community Effort</h4>
-                <p class="text-muted small">
-                    Propose & Vote on creative ideas brought forward by the community! 🚀
+        <div class="container d-flex align-items-end" *ngFor="let item of roadmaps; let i = index">
+            <div class="nes-balloon nes-pointer text-primary mb-5" [class]="(0 === i % 2) ? 'from-right' : 'from-left'">
+                {{item.when | date : 'mediumDate'}}<br>
+                <h4>{{item.title}}</h4>
+                <p class="text-muted small" [innerHtml]="item.content | markdown"></p>
+                <strapi-media [media]="item.media" *ngIf="item.media"></strapi-media>
+                <p *ngIf="item.link">
+                    <a class="nes-btn is-primary" [href]="item.link" target="_blank">{{item.link_title}}</a>
                 </p>
             </div>
             <img src="assets/BB.png" alt="" class="dialog-head">

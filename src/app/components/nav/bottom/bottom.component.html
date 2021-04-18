@@ -2,7 +2,7 @@
     <div class="container">
         <a name="footer"></a>
         <div class="row">
-            <div *ngFor="let _link of links" [class]="_link.class ||'col'" class="mb-3">
+            <div *ngFor="let _link of (session.metadata.bottom_nav || links)" [class]="_link.class ||'col'" class="mb-3">
 
                 <!-- if have groups -->
                 <ng-container *ngIf="_link.groups">

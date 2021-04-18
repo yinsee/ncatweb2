@@ -23,7 +23,7 @@
                 <h5 class="text-warning">1,000T<br>NCAT</h5>
             </div>
         </div>
-        <progress class="nes-progress is-warning" [value]="session.price.percentage" max="100"></progress>
+        <progress class="nes-progress is-warning" [value]="session.price.percentage || 0" max="100"></progress>
         <div class="d-flex align-items-center">
             <div class="flex-grow-1">
                 <div>

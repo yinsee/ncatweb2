@@ -1,7 +1,7 @@
 // prod
 export const environment = {
   production: true,
-  apiBaseurl: '',
+  apiBaseurl: 'https://cms.ncat.fun',
   contactus: 'mailto:admin@ncat.fun',
   burnAddress: 'https://bscscan.com/token/0x0cF011A946f23a03CeFF92A4632d5f9288c6C70D?a=0x0000000000000000000000000000000000000001',
   priceDataJson: 'https://nyan-4a2e5-default-rtdb.firebaseio.com/ncat.json',

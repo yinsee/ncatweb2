@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { ApiHttpService } from './api-http.service';
-import { Price } from './models.definitioins';
+import { Metadata, Price } from './models.definitioins';
 import * as blockchain from "../services/blockchain";
 declare let window: any;
 
@@ -12,6 +12,7 @@ export class SessionService {
   price: Price = {};
   address: string | null = null;
   balance: number = 0;
+  metadata: Metadata = {};
 
   get haveWallet(): boolean {
     return window.ethereum?.isConnected();
@@ -26,6 +27,7 @@ export class SessionService {
 
   constructor(private http: ApiHttpService) {
     this.updatePrice();
+    this.updateMetadata();
   }
 
   updatePrice() {
@@ -62,4 +64,18 @@ export class SessionService {
     });
   }
 
+  //
+
+  updateMetadata() {
+    this.http.get(this.http.createUrl('metadata'))
+      .subscribe((res: any) => {
+        this.metadata = res;
+      }, (error) => {
+        // retry in 5 sec
+        setTimeout(() => this.updatePrice(), 5000);
+      }, () => {
+        // get new price every 15min, if u wait long enough :D
+        setTimeout(() => this.updatePrice(), 15 * 60 * 1000);
+      });
+  }
 }

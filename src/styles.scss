@@ -34,3 +34,11 @@ body {
   height: 15vw;
   max-height: 120px;
 }
+
+.nes-container,
+.nes-group {
+  strong {
+    font-weight: normal;
+    color: var(--primary);
+  }
+}

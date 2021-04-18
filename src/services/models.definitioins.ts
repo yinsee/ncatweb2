@@ -1,3 +1,8 @@
+export interface Metadata {
+    top_nav?: Links[];
+    bottom_nav?: Links[];
+    fold_content?: string;
+}
 export interface LinkItems {
     title?: string;
     fragment?: string;
@@ -23,4 +28,15 @@ export interface Price {
     price?: any,
     supply?: string,
     time?: number,
+}
+
+export interface Webpage {
+    _id: string;
+    slug: string;
+    title?: string;
+    content?: string;
+    published_at?: string;
+    author?: string;
+    likes?: number;
+    summary?: string;
 }

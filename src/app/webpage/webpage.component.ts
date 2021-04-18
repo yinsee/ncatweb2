@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ApiHttpService } from 'src/services/api-http.service';
+import { Webpage } from 'src/services/models.definitioins';
 
 @Component({
   selector: 'app-webpage',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WebpageComponent implements OnInit {
 
-  constructor() { }
+  webpage: Webpage | undefined;
+  notfound = false;
+
+  constructor(private route: ActivatedRoute, private http: ApiHttpService) {
+    route.params.subscribe((params) => {
+      console.log(params.url);
+      console.log(params.id);
+
+      this.loadPage(params.id);
+    })
+  }
 
   ngOnInit(): void {
+  }
+
+  loadPage(id: string) {
+    this.http.get(this.http.createUrlWithPathVariables('webpages', [id])).subscribe((res: any) => {
+      this.webpage = res;
+    }, (error) => {
+      this.notfound = true;
+    });
   }
 
 }
