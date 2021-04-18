@@ -10,14 +10,11 @@ import { Webpage } from 'src/services/models.definitioins';
 })
 export class WebpageComponent implements OnInit {
 
-  webpage: Webpage | undefined;
+  webpage?: Webpage;
   notfound = false;
 
   constructor(private route: ActivatedRoute, private http: ApiHttpService) {
     route.params.subscribe((params) => {
-      console.log(params.url);
-      console.log(params.id);
-
       this.loadPage(params.id);
     })
   }

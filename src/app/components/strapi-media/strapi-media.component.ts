@@ -10,6 +10,9 @@ export class StrapiMediaComponent implements OnInit {
 
   environment = environment;
   @Input() media: any;
+  @Input() class?: string;
+  @Input() style?: string;
+
   constructor() { }
 
   ngOnInit(): void {

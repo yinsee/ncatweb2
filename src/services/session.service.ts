@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ApiHttpService } from './api-http.service';
-import { Metadata, Price } from './models.definitioins';
+import { Cart, Metadata, Price } from './models.definitioins';
+import { SessionStorageService } from 'angular-web-storage';
+
 import * as blockchain from "../services/blockchain";
 declare let window: any;
 
@@ -9,10 +11,12 @@ declare let window: any;
   providedIn: 'root'
 })
 export class SessionService {
+
   price: Price = {};
   address: string | null = null;
   balance: number = 0;
   metadata: Metadata = {};
+  cart: Cart;
 
   get haveWallet(): boolean {
     return window.ethereum?.isConnected();
@@ -25,7 +29,8 @@ export class SessionService {
     return window.ethereum?.selectedAddress !== null;
   }
 
-  constructor(private http: ApiHttpService) {
+  constructor(private http: ApiHttpService, private storage: SessionStorageService) {
+    this.cart = Object.assign(storage.get('cart') || {}, new Cart);
     this.updatePrice();
     this.updateMetadata();
   }
@@ -34,7 +39,6 @@ export class SessionService {
     this.http.get(environment.priceDataJson)
       .subscribe((res: any) => {
         this.price = res;
-        console.log(res);
       }, (error) => {
         // retry in 5 sec
         setTimeout(() => this.updatePrice(), 5000);
@@ -42,6 +46,17 @@ export class SessionService {
         // get new price every 15min, if u wait long enough :D
         setTimeout(() => this.updatePrice(), 15 * 60 * 1000);
       });
+  }
+
+  // cart
+  saveCart() {
+    this.cart.subtotal = 0;
+    this.cart.items.forEach(e => {
+      this.cart.subtotal += e.amount;
+    });
+    this.cart.total = this.cart.subtotal;
+    this.storage.set('cart', this.cart);
+    console.log(this.cart);
   }
 
   //  wallet action
