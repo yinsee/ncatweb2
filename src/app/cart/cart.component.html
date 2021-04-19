@@ -1,6 +1,7 @@
 <div class="bg-white py-5">
     <div class="container" *ngIf="session.cart.items.length > 0; else Empty">
         <div class="nes-container with-title is-rounded">
+            <a name="cart"></a>
             <div class="title">Your Cart</div>
 
             <div class="d-flex align-items-center mb-3" *ngFor="let item of session.cart.items">
@@ -135,7 +136,9 @@
     <ng-template #Empty>
         <div class="text-center p-5">
             <h1>Purrrr</h1>
-            <img src="assets/cat-loading.gif" alt="" class="img-fluid">
+            <p>Your cart is empty</p>
+            <img src="assets/cat-feed.gif" alt="" class="img-fluid"><br>
+            <a class=" nes-btn is-primary" [routerLink]="['/merchandise']">Go Shopping</a>
         </div>
     </ng-template>
 

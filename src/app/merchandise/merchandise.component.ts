@@ -35,6 +35,6 @@ export class MerchandiseComponent implements OnInit {
   addCart() {
     this.session.cart.items.push({ product: this.merchandise, quantity: this.quantity, amount: this.quantity * (this.merchandise?.price || 0) });
     this.session.saveCart();
-    this.router.navigate(['/cart'], {});
+    this.router.navigate(['/cart'], { fragment: 'cart' });
   }
 }
